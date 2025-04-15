@@ -1,7 +1,9 @@
-# {{ feed.title }}
+# <?= isset($feed->title) ? $feed->title : '' ?>
 
-## {{ feed.subtitle_detail.value }}
-{% for entry in entries %}
-Title: {{ entry.title }}
-Date: {{ entry.published }}
-{% endfor %}
+## <?= isset($feed->subtitle_detail->value) ? $feed->subtitle_detail->value : '' ?>
+<?php if (!empty($entries)): ?>
+<?php foreach ($entries as $entry): ?>
+Title: <?= isset($entry->title) ? $entry->title : '' ?>
+Date: <?= isset($entry->published) ? $entry->published : '' ?>
+<?php endforeach; ?>
+<?php endif; ?>
